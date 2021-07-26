@@ -1,0 +1,75 @@
+---
+title: "Employee Dataset Question"
+output: html_notebook
+---
+
+You are required to write the appropriate R commands statements to read the file in data frame 'dsalary' and answer the following:
+
+| Rank     | YrsSincePhd | YrsService | Gender | Salary(K) |
+|----------|-------------|------------|--------|-----------|
+| AstProf  | 3           | 7          | M      | 85        |
+| AstProf  | 8           | 12         | F      | 95        |
+| AstProf  | 2           | 5          | F      | 80        |
+| AsctProf | 9           | 18         | M      | 150       |
+| AsctProf | 10          | 19         | F      | 150       |
+| AsctProf | 10          | 18         | M      | 160       |
+| Prof     | 20          | 25         | M      | 200       |
+| Prof     | 22          | 29         | F      | 250       |
+| Prof     | 20          | 25         | M      | 210       |
+| Prof     | 22          | 29         | F      | 220       |
+
+```{r}
+dsalary=read.csv('E:/Data Science/Dataset/Employee.csv',sep=" ")
+print(dsalary)
+```
+
+a)  Find out the number of observations and variables in the given dataset.
+
+    ```{r}
+    print(paste("Observations:",nrow(dsalary)))
+    print(paste("Variables:",ncol(dsalary)))
+    ```
+
+b)  Calculate the average salary of all faculty members, male and female faculty members separately, and rank wise faculty members.
+
+    ```{r}
+    print(paste("Average salary of all faculty members: ",mean(dsalary$Salary.K.)))
+    print(paste("Average salary of male members: ",mean(dsalary[which(dsalary$Gender=='M'),]$Salary.K.)))
+    print(paste("Average salary of Female members: ",mean(dsalary[which(dsalary$Gender=='F'),]$Salary.K.)))
+
+    ```
+
+c)  Count the number of male Asst. Prof and female Associate professors.
+
+    ```{r}
+    d=which((dsalary$Gender=="M") & (dsalary$Rank=="AsctProf"))
+    print(length(d))
+    ```
+
+d)  Display first two columns of second row.
+
+    ```{r}
+    print(dsalary[2,1:2])
+    ```
+
+e)  Display YrsSincePhd and Yrsof Service of all the teachers.
+
+    ```{r}
+    print(dsalary[[2,3]])
+    ```
+
+f)  Print the highest salary drawing male Associate Professor with maximum year of services.\
+
+g)  Display the Rank of the teacher whose salary is more than 150.\
+
+h)  Add a new column 'special allowance' which is 5% of the salary.\
+
+i)  Increase the salary of male prof by 5% and female prof by 10% and then compare the average salary between these two.\
+
+j)  Create a vector which contains the average salary of each rank.
+
+```{r}
+print("Vector which contains the average salary of each rank")
+avg_sal=c(aggregate(Salary~Rank,dsalary,mean))
+print(avg_sal)
+```

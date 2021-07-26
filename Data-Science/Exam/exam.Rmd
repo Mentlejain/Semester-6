@@ -1,0 +1,31 @@
+---
+title: "Student Info"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+  word_document: default
+---
+
+# Setup
+
+*setup of student values*
+
+```{r Setup}
+knitr::opts_chunk$set(message=FALSE, echo=FALSE)
+```
+
+# student_info
+
+```{r student_info}
+df=data.frame(Stud_id=c(1:5),Height=sample(150:200,5), Weight=sample(40:90,5), Age=sample(18:21,5,replace = TRUE))
+library(knitr)
+kable(df)
+```
+
+# Plot
+
+```{r Plot, echo=TRUE}
+barplot(df$Height,width = 6,names.arg = df$Stud_id)
+
+```

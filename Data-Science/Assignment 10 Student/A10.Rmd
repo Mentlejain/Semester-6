@@ -1,0 +1,59 @@
+---
+title: "Assignment 10"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+  word_document: default
+  html_notebook: default
+---
+
+Fifteen students were enrolled in a course. Their ages were: 20 20 20 20 20 21 21 21 22 22 22 22 23 23 23
+
+```{r}
+student=scan("E:\\Data Science\\Assignment 10 Student\\Student.txt",sep=" ")
+print(student)
+
+```
+
+i)  Find the median age of all students under 22 years.
+
+```{r}
+median(student[which(student<22)])
+```
+
+ii) Find the median age of all students
+
+```{r}
+median(student)
+```
+
+iii) Find the mean age of all students
+
+```{r}
+mean(student)
+```
+
+iv) Find modal age for all students
+
+```{r}
+mode<-function(v)
+{
+    t=table(v)
+    n=names(which(t==max(t)))
+    return(n)
+}
+```
+
+```{r}
+mode(student)
+```
+
+v)  Two more students enter the class. The age of both students is 23. What is now mean, mode and median?
+
+```{r}
+student=append(student,c(23,23))
+print(paste('Mean:',mean(student)))
+print(paste('Median:',median(student)))
+print('Mode:');print(mode(student))
+```

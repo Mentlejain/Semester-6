@@ -1,0 +1,985 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Bollywood.R},
+  pdfauthor={JAK},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Bollywood.R}
+\author{JAK}
+\date{2021-05-05}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bollywood }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"bollywood.csv"}\NormalTok{)}
+
+\CommentTok{\# Access the last 10 movies (from bottom of bollywood dataframe).}
+\CommentTok{\# Find out the total number of missing values (NA) in the bollywood dataframe.}
+\CommentTok{\# Write the command to find out which movie tops the list in terms of Total Collections}
+\CommentTok{\# Write the command to find out which movie comes second on the list in terms of Total Collections}
+\CommentTok{\# Find out the movies shot by Shahrukh, Akshay \& Amitabh separately.}
+\CommentTok{\# What is the total collection of Shahrukh, Akshay \& Amitabh movies individually?}
+\CommentTok{\#     Write command/s to find out how many movies are in flop,average, Hit \& Superhit categories in entire bollywood dataset.}
+\CommentTok{\# Write command/s to display the movies which have Tcollection more than 100.}
+\CommentTok{\# Find mean of Ocollection, Wcollection, Fwcollecion \& Tcollection.}
+\CommentTok{\# Find maximum value of Ocollection, Wcollection, Fwcollecion \& Tcollection.}
+\CommentTok{\# Write command to find name of movies which have maximum Ocollection, Wcollection, Fwcollecion \& Tcollection.}
+
+
+\FunctionTok{print}\NormalTok{(}\StringTok{"DATASET"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "DATASET"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#View(bollywood) opens the file in the new tab}
+\FunctionTok{print}\NormalTok{(bollywood)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                             Movie         Lead     Rdate Ocollection
+## 1                          Dangal        Aamir 23-Dec-16       29.78
+## 2                    Wajah Tum Ho      Sharman 16-Dec-16        2.86
+## 3                         Befikre      Ranveer 09-Dec-16       10.36
+## 4                       Kahaani 2        Vidya 02-Dec-16        4.25
+## 5                    Dear Zindagi     Shahrukh 25-Nov-16        8.75
+## 6                         Force 2         John 18-Nov-16        6.05
+## 7                       Rock On 2       Farhan 11-Nov-16        2.02
+## 8              Ae Dil Hai Mushkil      Ranbeer 28-Oct-16       13.30
+## 9                         Shivaay         Ajay 28-Oct-16       10.24
+## 10                         Mirzya Harshvardhan 07-Oct-16        2.20
+## 11 M. S. Dhoni - The Untold Story      Sushant 30-Sep-16       21.30
+## 12                        Parched   Tannishtha 23-Sep-16        0.12
+## 13                          Banjo      Riteish 23-Sep-16        1.72
+## 14                    Raaz Reboot       Emraan 16-Sep-16        6.30
+## 15                           Pink      Amitabh 16-Sep-16        4.32
+## 16                Baar Baar Dekho      Katrina 09-Sep-16        6.81
+## 17                     Freaky Ali   Nawazuddin 09-Sep-16        2.55
+## 18                          Akira     Sonakshi 02-Sep-16        5.15
+## 19                  A Flying Jatt        Tiger 25-Aug-16        7.10
+## 20              Happy Bhag Jayegi        Abhay 19-Aug-16        2.32
+## 21                         Rustom       Akshay 12-Aug-16       14.11
+## 22                   Mohenjo Daro      Hrithik 12-Aug-16        8.87
+## 23                        Dishoom         John 29-Jul-16       11.05
+## 24                        Madaari       Irrfan 22-Jul-16        2.25
+## 25              Great Grand Masti      Riteish 15-Jul-16        2.50
+## 26                         Sultan       Salman 06-Jul-16       36.54
+## 27               Raman Raghav 2.0   Nawazuddin 24-Jun-16        1.10
+## 28                    Udta Punjab       Shahid 17-Jun-16       10.05
+## 29                         Dhanak        Hetal 17-Jun-16        0.29
+## 30            Do Lafzon Ki Kahani      Randeep 10-Jun-16        1.03
+## 31                           TE3N      Amitabh 10-Jun-16        2.61
+## 32                    Housefull 3       Akshay 03-Jun-16       15.21
+## 33                      Veerappan      Sandeep 27-May-16        1.79
+## 34                         Phobia      Radhika 27-May-16        0.25
+## 35                        Waiting  Naseeruddin 27-May-16        0.27
+## 36                        Sarbjit    Aishwarya 20-May-16        3.69
+## 37                          Azhar       Emraan 13-May-16        6.30
+## 38                One Night Stand        Sunny 06-May-16        0.60
+## 39                    1920 London      Sharman 06-May-16        2.50
+## 40                        Traffic        Manoj 06-May-16        0.40
+## 41                         Baaghi        Tiger 29-Apr-16       11.94
+## 42                            Fan     Shahrukh 15-Apr-16       19.20
+## 43                     Love Games   Patralekha 08-Apr-16        1.03
+## 44                        Ki & Ka        Arjun 01-Apr-16        7.30
+## 45                 Rocky Handsome         John 25-Mar-16        5.39
+## 46                  Kapoor & Sons     Siddarth 18-Mar-16        6.85
+## 47                  Teraa Surroor       Himesh 11-Mar-16        1.79
+## 48                  Jai Gangaajal     Priyanka 04-Mar-16        5.50
+## 49                        Aligarh        Manoj 26-Feb-16        0.31
+## 50   Tere Bin Laden Dead Or Alive       Manish 26-Feb-16        0.54
+## 51                     LoveShhuda       Girish 19-Feb-16        0.64
+## 52                         Neerja        Sonam 19-Feb-16        4.70
+## 53                         Fitoor      Katrina 12-Feb-16        3.61
+## 54                       Sanam Re       Pulkit 12-Feb-16        5.04
+## 55               Sanam Teri Kasam        Mawra 05-Feb-16        1.25
+## 56              Ghayal Once Again    SunnyDeol 05-Feb-16        7.20
+## 57                  Saala Khadoos     Madhavan 29-Jan-16        2.19
+## 58                     Mastizaade        Sunny 29-Jan-16        5.59
+## 59                        Airlift       Akshay 22-Jan-16       12.35
+## 60           Kyaa Kool Hain Hum 3      Tusshar 22-Jan-16        8.15
+## 61                          Wazir      Amitabh 08-Jan-16        5.61
+##    Wcollection Fwcollection Tcollection   Verdict
+## 1       106.95       197.53      386.68 Super Hit
+## 2         7.79        10.29       10.29      Flop
+## 3        34.36        48.75       59.30   Average
+## 4        16.97        24.26       30.56   Average
+## 5        32.50        47.00       64.44       Hit
+## 6        20.05        30.15       30.15   Average
+## 7         7.01        10.01       10.01      Flop
+## 8        35.60        80.19      112.14       Hit
+## 9        28.56        70.41      100.05       Hit
+## 10        6.50           NA        6.50      Flop
+## 11       66.00        94.13      132.85 Super Hit
+## 12        0.62           NA        0.62      Flop
+## 13        5.92         8.67        8.67      Flop
+## 14       18.09        26.73       26.73      Flop
+## 15       21.51        35.91       61.83 Super Hit
+## 16       21.16        29.40       29.40      Flop
+## 17        8.50        13.50       13.50      Flop
+## 18       16.65        26.39       26.39      Flop
+## 19       29.45        36.85       36.85      Flop
+## 20       10.71        17.65       28.02   Average
+## 21       50.42        90.90      127.13 Super Hit
+## 22       30.54        51.18       57.42      Flop
+## 23       37.32        53.34       67.97   Average
+## 24        9.75        14.00       16.80      Flop
+## 25        8.20        13.14       13.14      Flop
+## 26      180.36       229.16      300.45 Super Hit
+## 27        3.98         6.01        6.95      Flop
+## 28       33.80        48.50       60.27       Hit
+## 29        1.89           NA        1.89      Flop
+## 30        3.74         5.54        5.54      Flop
+## 31       11.13        16.34       19.06      Flop
+## 32       53.31        80.10      109.04       Hit
+## 33        5.95         7.45        7.50      Flop
+## 34        1.24         2.34        2.52   Average
+## 35        1.30         2.05        2.85      Flop
+## 36       13.96        22.09       27.38   Average
+## 37       20.80        29.70       33.03   Average
+## 38        1.96         2.96        3.05      Flop
+## 39        7.73        12.45       15.45      Flop
+## 40        1.98         3.15        3.75      Flop
+## 41       38.58        59.72       76.34       Hit
+## 42       52.35        71.50       84.10   Average
+## 43        3.06         3.94        4.04      Flop
+## 44       25.23        37.57       52.31   Average
+## 45       16.12        22.85       25.15      Flop
+## 46       26.35        46.93       73.29       Hit
+## 47        6.46        11.38       14.15   Average
+## 48       17.70        25.20       32.63   Average
+## 49        1.29         2.09        2.50      Flop
+## 50        1.76         2.86        2.93      Flop
+## 51        2.17         2.98        3.07      Flop
+## 52       22.01        35.32       75.61 Super Hit
+## 53       14.11        18.61       19.28      Flop
+## 54       17.05        25.82       27.74   Average
+## 55        4.66         8.66        9.11      Flop
+## 56       23.25        33.25       35.70   Average
+## 57        9.93        12.63       14.79      Flop
+## 58       18.45        28.74       36.44   Average
+## 59       44.30        83.50      128.10 Super Hit
+## 60       20.15        29.65       30.25   Average
+## 61       21.01        30.05       41.02   Average
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Type of dataset"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Type of dataset"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{class}\NormalTok{(bollywood))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "data.frame"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{mode}\NormalTok{(bollywood))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "list"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{typeof}\NormalTok{(bollywood))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "list"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Internal Data Structure Of Dataset(str)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Internal Data Structure Of Dataset(str)"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{str}\NormalTok{(bollywood))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    61 obs. of  8 variables:
+##  $ Movie       : chr  "Dangal" "Wajah Tum Ho" "Befikre" "Kahaani 2" ...
+##  $ Lead        : chr  "Aamir" "Sharman" "Ranveer" "Vidya" ...
+##  $ Rdate       : chr  "23-Dec-16" "16-Dec-16" "09-Dec-16" "02-Dec-16" ...
+##  $ Ocollection : num  29.78 2.86 10.36 4.25 8.75 ...
+##  $ Wcollection : num  106.95 7.79 34.36 16.97 32.5 ...
+##  $ Fwcollection: num  197.5 10.3 48.8 24.3 47 ...
+##  $ Tcollection : num  386.7 10.3 59.3 30.6 64.4 ...
+##  $ Verdict     : chr  "Super Hit" "Flop" "Average" "Average" ...
+## NULL
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Last 10 movies (from bottom of bollywood dataframe) using column."}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Last 10 movies (from bottom of bollywood dataframe) using column."
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{tail}\NormalTok{(bollywood,}\DecValTok{10}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                   Movie      Lead     Rdate Ocollection Wcollection
+## 52               Neerja     Sonam 19-Feb-16        4.70       22.01
+## 53               Fitoor   Katrina 12-Feb-16        3.61       14.11
+## 54             Sanam Re    Pulkit 12-Feb-16        5.04       17.05
+## 55     Sanam Teri Kasam     Mawra 05-Feb-16        1.25        4.66
+## 56    Ghayal Once Again SunnyDeol 05-Feb-16        7.20       23.25
+## 57        Saala Khadoos  Madhavan 29-Jan-16        2.19        9.93
+## 58           Mastizaade     Sunny 29-Jan-16        5.59       18.45
+## 59              Airlift    Akshay 22-Jan-16       12.35       44.30
+## 60 Kyaa Kool Hain Hum 3   Tusshar 22-Jan-16        8.15       20.15
+## 61                Wazir   Amitabh 08-Jan-16        5.61       21.01
+##    Fwcollection Tcollection   Verdict
+## 52        35.32       75.61 Super Hit
+## 53        18.61       19.28      Flop
+## 54        25.82       27.74   Average
+## 55         8.66        9.11      Flop
+## 56        33.25       35.70   Average
+## 57        12.63       14.79      Flop
+## 58        28.74       36.44   Average
+## 59        83.50      128.10 Super Hit
+## 60        29.65       30.25   Average
+## 61        30.05       41.02   Average
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Total number of missing values (NA) in the bollywood dataframe."}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Total number of missing values (NA) in the bollywood dataframe."
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(bollywood)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#edit(bollywood) used to edit the invoking file}
+
+\FunctionTok{attach}\NormalTok{(bollywood)}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Last 10 column"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Last 10 column"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{tail}\NormalTok{(bollywood[}\StringTok{\textquotesingle{}Movie\textquotesingle{}}\NormalTok{],}\DecValTok{10}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                   Movie
+## 52               Neerja
+## 53               Fitoor
+## 54             Sanam Re
+## 55     Sanam Teri Kasam
+## 56    Ghayal Once Again
+## 57        Saala Khadoos
+## 58           Mastizaade
+## 59              Airlift
+## 60 Kyaa Kool Hain Hum 3
+## 61                Wazir
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Second method"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Second method"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n}\OtherTok{=}\FunctionTok{nrow}\NormalTok{(bollywood)}
+\FunctionTok{print}\NormalTok{(n)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 61
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m}\OtherTok{=}\NormalTok{bollywood}\SpecialCharTok{$}\NormalTok{Movie[(n}\DecValTok{{-}9}\NormalTok{)}\SpecialCharTok{:}\NormalTok{n]}
+\FunctionTok{print}\NormalTok{(m)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "Neerja"               "Fitoor"               "Sanam Re"            
+##  [4] "Sanam Teri Kasam"     "Ghayal Once Again"    "Saala Khadoos"       
+##  [7] "Mastizaade"           "Airlift"              "Kyaa Kool Hain Hum 3"
+## [10] "Wazir"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Movie tops the list in terms of Total Collections"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Movie tops the list in terms of Total Collections"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#print(max(Tcollection))}
+\CommentTok{\#w=which.max(bollywood$Tcollectionn)}
+\CommentTok{\#print(bollywood[w,])}
+\FunctionTok{print}\NormalTok{(bollywood[}\FunctionTok{which.max}\NormalTok{(bollywood}\SpecialCharTok{$}\NormalTok{Tcollection),])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Movie  Lead     Rdate Ocollection Wcollection Fwcollection Tcollection
+## 1 Dangal Aamir 23-Dec-16       29.78      106.95       197.53      386.68
+##     Verdict
+## 1 Super Hit
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Movie comes second on the list in terms of Total Collections"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Movie comes second on the list in terms of Total Collections"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mt}\OtherTok{=}\FunctionTok{max}\NormalTok{(bollywood}\SpecialCharTok{$}\NormalTok{Tcollection)}
+\NormalTok{mi}\OtherTok{=}\FunctionTok{which}\NormalTok{(bollywood}\SpecialCharTok{$}\NormalTok{Tcollection}\SpecialCharTok{==}\NormalTok{mt)}
+\NormalTok{mt2}\OtherTok{=}\FunctionTok{max}\NormalTok{(bollywood}\SpecialCharTok{$}\NormalTok{Tcollection[}\SpecialCharTok{{-}}\NormalTok{mi])}
+\FunctionTok{print}\NormalTok{(bollywood[}\FunctionTok{which}\NormalTok{(bollywood}\SpecialCharTok{$}\NormalTok{Tcollection}\SpecialCharTok{==}\NormalTok{mt2),])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     Movie   Lead     Rdate Ocollection Wcollection Fwcollection Tcollection
+## 26 Sultan Salman 06-Jul-16       36.54      180.36       229.16      300.45
+##      Verdict
+## 26 Super Hit
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Movies shot by Shahrukh"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Movies shot by Shahrukh"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(Movie[bollywood[}\StringTok{\textquotesingle{}Lead\textquotesingle{}}\NormalTok{]}\SpecialCharTok{==}\StringTok{\textquotesingle{}Shahrukh\textquotesingle{}}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Dear Zindagi" "Fan"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Movies shot by Akshay"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Movies shot by Akshay"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(Movie[bollywood[}\StringTok{\textquotesingle{}Lead\textquotesingle{}}\NormalTok{]}\SpecialCharTok{==}\StringTok{\textquotesingle{}Akshay\textquotesingle{}}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Rustom"      "Housefull 3" "Airlift"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Movies shot by Amitabh"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Movies shot by Amitabh"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(Movie[bollywood[}\StringTok{\textquotesingle{}Lead\textquotesingle{}}\NormalTok{]}\SpecialCharTok{==}\StringTok{\textquotesingle{}Amitabh\textquotesingle{}}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Pink"  "TE3N"  "Wazir"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#subset(bollywood, Lead == "Shahrukh")}
+\CommentTok{\#subset(bollywood, Lead == "Akshay")}
+\CommentTok{\#subset(bollywood, Lead  == "Amitabh")}
+
+\FunctionTok{print}\NormalTok{(}\StringTok{"Total collection of Shahrukh"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Total collection of Shahrukh"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{sum}\NormalTok{(Tcollection[bollywood[}\StringTok{\textquotesingle{}Lead\textquotesingle{}}\NormalTok{]}\SpecialCharTok{==}\StringTok{\textquotesingle{}Shahrukh\textquotesingle{}}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 148.54
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Total collection of Akshay"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Total collection of Akshay"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{sum}\NormalTok{(Tcollection[bollywood[}\StringTok{\textquotesingle{}Lead\textquotesingle{}}\NormalTok{]}\SpecialCharTok{==}\StringTok{\textquotesingle{}Akshay\textquotesingle{}}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 364.27
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Total collection of Amitabh"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Total collection of Amitabh"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{sum}\NormalTok{(Tcollection[bollywood[}\StringTok{\textquotesingle{}Lead\textquotesingle{}}\NormalTok{]}\SpecialCharTok{==}\StringTok{\textquotesingle{}Amitabh\textquotesingle{}}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 121.91
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#sum(shahrukh$Tcollection)}
+\CommentTok{\#sum(akshay$Tcollection)}
+\CommentTok{\#sum(amitabh$Tcollection)}
+
+\FunctionTok{print}\NormalTok{(}\StringTok{"Movies in Flop category"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Movies in Flop category"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{subset}\NormalTok{(bollywood, Verdict }\SpecialCharTok{==} \StringTok{"Flop"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                           Movie         Lead     Rdate Ocollection Wcollection
+## 2                  Wajah Tum Ho      Sharman 16-Dec-16        2.86        7.79
+## 7                     Rock On 2       Farhan 11-Nov-16        2.02        7.01
+## 10                       Mirzya Harshvardhan 07-Oct-16        2.20        6.50
+## 12                      Parched   Tannishtha 23-Sep-16        0.12        0.62
+## 13                        Banjo      Riteish 23-Sep-16        1.72        5.92
+## 14                  Raaz Reboot       Emraan 16-Sep-16        6.30       18.09
+## 16              Baar Baar Dekho      Katrina 09-Sep-16        6.81       21.16
+## 17                   Freaky Ali   Nawazuddin 09-Sep-16        2.55        8.50
+## 18                        Akira     Sonakshi 02-Sep-16        5.15       16.65
+## 19                A Flying Jatt        Tiger 25-Aug-16        7.10       29.45
+## 22                 Mohenjo Daro      Hrithik 12-Aug-16        8.87       30.54
+## 24                      Madaari       Irrfan 22-Jul-16        2.25        9.75
+## 25            Great Grand Masti      Riteish 15-Jul-16        2.50        8.20
+## 27             Raman Raghav 2.0   Nawazuddin 24-Jun-16        1.10        3.98
+## 29                       Dhanak        Hetal 17-Jun-16        0.29        1.89
+## 30          Do Lafzon Ki Kahani      Randeep 10-Jun-16        1.03        3.74
+## 31                         TE3N      Amitabh 10-Jun-16        2.61       11.13
+## 33                    Veerappan      Sandeep 27-May-16        1.79        5.95
+## 35                      Waiting  Naseeruddin 27-May-16        0.27        1.30
+## 38              One Night Stand        Sunny 06-May-16        0.60        1.96
+## 39                  1920 London      Sharman 06-May-16        2.50        7.73
+## 40                      Traffic        Manoj 06-May-16        0.40        1.98
+## 43                   Love Games   Patralekha 08-Apr-16        1.03        3.06
+## 45               Rocky Handsome         John 25-Mar-16        5.39       16.12
+## 49                      Aligarh        Manoj 26-Feb-16        0.31        1.29
+## 50 Tere Bin Laden Dead Or Alive       Manish 26-Feb-16        0.54        1.76
+## 51                   LoveShhuda       Girish 19-Feb-16        0.64        2.17
+## 53                       Fitoor      Katrina 12-Feb-16        3.61       14.11
+## 55             Sanam Teri Kasam        Mawra 05-Feb-16        1.25        4.66
+## 57                Saala Khadoos     Madhavan 29-Jan-16        2.19        9.93
+##    Fwcollection Tcollection Verdict
+## 2         10.29       10.29    Flop
+## 7         10.01       10.01    Flop
+## 10           NA        6.50    Flop
+## 12           NA        0.62    Flop
+## 13         8.67        8.67    Flop
+## 14        26.73       26.73    Flop
+## 16        29.40       29.40    Flop
+## 17        13.50       13.50    Flop
+## 18        26.39       26.39    Flop
+## 19        36.85       36.85    Flop
+## 22        51.18       57.42    Flop
+## 24        14.00       16.80    Flop
+## 25        13.14       13.14    Flop
+## 27         6.01        6.95    Flop
+## 29           NA        1.89    Flop
+## 30         5.54        5.54    Flop
+## 31        16.34       19.06    Flop
+## 33         7.45        7.50    Flop
+## 35         2.05        2.85    Flop
+## 38         2.96        3.05    Flop
+## 39        12.45       15.45    Flop
+## 40         3.15        3.75    Flop
+## 43         3.94        4.04    Flop
+## 45        22.85       25.15    Flop
+## 49         2.09        2.50    Flop
+## 50         2.86        2.93    Flop
+## 51         2.98        3.07    Flop
+## 53        18.61       19.28    Flop
+## 55         8.66        9.11    Flop
+## 57        12.63       14.79    Flop
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Movies in Average category"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Movies in Average category"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{subset}\NormalTok{(bollywood, Verdict }\SpecialCharTok{==} \StringTok{"Average"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                   Movie      Lead     Rdate Ocollection Wcollection
+## 3               Befikre   Ranveer 09-Dec-16       10.36       34.36
+## 4             Kahaani 2     Vidya 02-Dec-16        4.25       16.97
+## 6               Force 2      John 18-Nov-16        6.05       20.05
+## 20    Happy Bhag Jayegi     Abhay 19-Aug-16        2.32       10.71
+## 23              Dishoom      John 29-Jul-16       11.05       37.32
+## 34               Phobia   Radhika 27-May-16        0.25        1.24
+## 36              Sarbjit Aishwarya 20-May-16        3.69       13.96
+## 37                Azhar    Emraan 13-May-16        6.30       20.80
+## 42                  Fan  Shahrukh 15-Apr-16       19.20       52.35
+## 44              Ki & Ka     Arjun 01-Apr-16        7.30       25.23
+## 47        Teraa Surroor    Himesh 11-Mar-16        1.79        6.46
+## 48        Jai Gangaajal  Priyanka 04-Mar-16        5.50       17.70
+## 54             Sanam Re    Pulkit 12-Feb-16        5.04       17.05
+## 56    Ghayal Once Again SunnyDeol 05-Feb-16        7.20       23.25
+## 58           Mastizaade     Sunny 29-Jan-16        5.59       18.45
+## 60 Kyaa Kool Hain Hum 3   Tusshar 22-Jan-16        8.15       20.15
+## 61                Wazir   Amitabh 08-Jan-16        5.61       21.01
+##    Fwcollection Tcollection Verdict
+## 3         48.75       59.30 Average
+## 4         24.26       30.56 Average
+## 6         30.15       30.15 Average
+## 20        17.65       28.02 Average
+## 23        53.34       67.97 Average
+## 34         2.34        2.52 Average
+## 36        22.09       27.38 Average
+## 37        29.70       33.03 Average
+## 42        71.50       84.10 Average
+## 44        37.57       52.31 Average
+## 47        11.38       14.15 Average
+## 48        25.20       32.63 Average
+## 54        25.82       27.74 Average
+## 56        33.25       35.70 Average
+## 58        28.74       36.44 Average
+## 60        29.65       30.25 Average
+## 61        30.05       41.02 Average
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Movies in Hit category"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Movies in Hit category"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{subset}\NormalTok{(bollywood, Verdict }\SpecialCharTok{==} \StringTok{"Hit"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                 Movie     Lead     Rdate Ocollection Wcollection Fwcollection
+## 5        Dear Zindagi Shahrukh 25-Nov-16        8.75       32.50        47.00
+## 8  Ae Dil Hai Mushkil  Ranbeer 28-Oct-16       13.30       35.60        80.19
+## 9             Shivaay     Ajay 28-Oct-16       10.24       28.56        70.41
+## 28        Udta Punjab   Shahid 17-Jun-16       10.05       33.80        48.50
+## 32        Housefull 3   Akshay 03-Jun-16       15.21       53.31        80.10
+## 41             Baaghi    Tiger 29-Apr-16       11.94       38.58        59.72
+## 46      Kapoor & Sons Siddarth 18-Mar-16        6.85       26.35        46.93
+##    Tcollection Verdict
+## 5        64.44     Hit
+## 8       112.14     Hit
+## 9       100.05     Hit
+## 28       60.27     Hit
+## 32      109.04     Hit
+## 41       76.34     Hit
+## 46       73.29     Hit
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Movies in Superhit category"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Movies in Superhit category"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{subset}\NormalTok{(bollywood, Verdict }\SpecialCharTok{==} \StringTok{"Super Hit"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                             Movie    Lead     Rdate Ocollection Wcollection
+## 1                          Dangal   Aamir 23-Dec-16       29.78      106.95
+## 11 M. S. Dhoni - The Untold Story Sushant 30-Sep-16       21.30       66.00
+## 15                           Pink Amitabh 16-Sep-16        4.32       21.51
+## 21                         Rustom  Akshay 12-Aug-16       14.11       50.42
+## 26                         Sultan  Salman 06-Jul-16       36.54      180.36
+## 52                         Neerja   Sonam 19-Feb-16        4.70       22.01
+## 59                        Airlift  Akshay 22-Jan-16       12.35       44.30
+##    Fwcollection Tcollection   Verdict
+## 1        197.53      386.68 Super Hit
+## 11        94.13      132.85 Super Hit
+## 15        35.91       61.83 Super Hit
+## 21        90.90      127.13 Super Hit
+## 26       229.16      300.45 Super Hit
+## 52        35.32       75.61 Super Hit
+## 59        83.50      128.10 Super Hit
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Movies which have Tcollection more than 100"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Movies which have Tcollection more than 100"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{subset}\NormalTok{(bollywood, Tcollection }\SpecialCharTok{\textgreater{}}\DecValTok{100}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                             Movie    Lead     Rdate Ocollection Wcollection
+## 1                          Dangal   Aamir 23-Dec-16       29.78      106.95
+## 8              Ae Dil Hai Mushkil Ranbeer 28-Oct-16       13.30       35.60
+## 9                         Shivaay    Ajay 28-Oct-16       10.24       28.56
+## 11 M. S. Dhoni - The Untold Story Sushant 30-Sep-16       21.30       66.00
+## 21                         Rustom  Akshay 12-Aug-16       14.11       50.42
+## 26                         Sultan  Salman 06-Jul-16       36.54      180.36
+## 32                    Housefull 3  Akshay 03-Jun-16       15.21       53.31
+## 59                        Airlift  Akshay 22-Jan-16       12.35       44.30
+##    Fwcollection Tcollection   Verdict
+## 1        197.53      386.68 Super Hit
+## 8         80.19      112.14       Hit
+## 9         70.41      100.05       Hit
+## 11        94.13      132.85 Super Hit
+## 21        90.90      127.13 Super Hit
+## 26       229.16      300.45 Super Hit
+## 32        80.10      109.04       Hit
+## 59        83.50      128.10 Super Hit
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Mean of Ocollection, Wcollection, Fwcollecion \& Tcollection"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Mean of Ocollection, Wcollection, Fwcollecion & Tcollection"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{sapply}\NormalTok{(bollywood[}\DecValTok{4}\SpecialCharTok{:}\DecValTok{7}\NormalTok{],mean,}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  Ocollection  Wcollection Fwcollection  Tcollection 
+##     6.312951    22.299180    36.059828    46.634754
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Max of Ocollection, Wcollection, Fwcollecion \& Tcollection"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Max of Ocollection, Wcollection, Fwcollecion & Tcollection"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{sapply}\NormalTok{(bollywood[}\DecValTok{4}\SpecialCharTok{:}\DecValTok{7}\NormalTok{],max,}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  Ocollection  Wcollection Fwcollection  Tcollection 
+##        36.54       180.36       229.16       386.68
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Name of movies which have maximum Ocollection, Wcollection, Fwcollecion \& Tcollection"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Name of movies which have maximum Ocollection, Wcollection, Fwcollecion & Tcollection"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(bollywood[}\FunctionTok{which.max}\NormalTok{(bollywood}\SpecialCharTok{$}\NormalTok{Tcollection),}\StringTok{"Movie"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Dangal"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(bollywood[}\FunctionTok{which.max}\NormalTok{(bollywood}\SpecialCharTok{$}\NormalTok{Ocollection),}\StringTok{"Movie"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Sultan"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(bollywood[}\FunctionTok{which.max}\NormalTok{(bollywood}\SpecialCharTok{$}\NormalTok{Fwcollection),}\StringTok{"Movie"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Sultan"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(bollywood[}\FunctionTok{which.max}\NormalTok{(bollywood}\SpecialCharTok{$}\NormalTok{Wcollection),}\StringTok{"Movie"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Sultan"
+\end{verbatim}
+
+\end{document}
